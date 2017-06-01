@@ -1,0 +1,21 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>profile!</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+	</head>
+
+	<body>
+<h2> This is the profile for {{user.alias}}</h2>
+<p> On {{user.birthday}} something awesome happened. {{user.name}} was born ! send {{user.alias}} an email at {{user.email}}</p>
+<form action="/friendpage" method="post">
+{% csrf_token %}
+<input type="submit" value="go back">
+<form action="/logout" method="post">
+<input type="submit" value="logout">
+</form>
+</form>
+	</body>
+</html>
