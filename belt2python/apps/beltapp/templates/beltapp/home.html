@@ -1,0 +1,69 @@
+<!doctype html>
+
+<html>
+	<head>
+		  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+	</head>
+
+	<body>
+        <!-- Image and text -->
+<nav class="navbar navbar-light bg-faded">
+  <a class="navbar-brand" href="#">
+    <img src="/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      Welcome {{me.alias}}!!    
+  </a>
+</nav>
+        
+{% if friends %}
+        <h3> Here are all your homies/amigos/compadres/eses/bros/friendos etc.....</h3>
+        {% else %}
+        <h3> You have no friends. you gotta get out there !!</h3>
+        {% endif %}
+        <table>
+        <tr>
+        <th> Alias </th>
+        <th> Action </th>
+        </tr>
+        {% for friend in friends %}
+        <tr>
+        <td> {{friend.alias}}</td>
+        <td> <a href="/users/{{friend.id}}">
+        <h5> View Tha Profile!!</h5></a>
+        
+        <form action="/users/unfriend/{{friend.id}}">
+        {% csrf_token %}
+        <input type="submit" value="unfriend">
+        </form>
+        <!--<a href="/users/remove/{{friend.id}}">Unfriend This Person</a></td>-->
+        </tr>
+        {% endfor %}
+        </table>
+        <h4> Here are some other users you aren't friends with(yet)</h4>
+        <table> 
+        <tr>
+        <th> Alias </th>
+        <th> Action </th>
+        </tr>
+        {% for user in users %}
+                        <tr>
+                            <td><a href='/users/{{user.id}}'>{{user.alias}}</a></td>
+                            <td>
+                                <form action='/users/add/{{user.id}}' method='post'>
+                                    {% csrf_token %}
+                                    <input id='add' type='submit' value='Add as Friend'>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+        </table>
+    <form action="/logout" method="post">
+    {% csrf_token %}
+    <input type="submit" value="logout">    
+    </form>
+	</body>
+</html>

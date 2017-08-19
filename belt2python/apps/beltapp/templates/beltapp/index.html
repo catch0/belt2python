@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Friends</title>
+        {% load staticfiles %}
+  {% load materializecss %}
+		<meta name="viewport" content="initial-scale=1.0">
+	</head>
+
+	<body>
+<h2>Register To meet some friends!!</h2>
+        <form action="/register" method="POST">
+        {% csrf_token %}
+      {% for error in errors %}
+                        <h4>{{error}}</h4>
+                    {% endfor %}
+        <label>Name:
+            <input type="text" name="first_name" /> 
+        </label>
+        <label>Alias:
+            <input type="text" name="alias" /> 
+        </label>
+        <label>Email: 
+            <input type="email" name="email" /> 
+        </label>
+        <h4> Password should be at least 8 charachters </h4>
+        <label>Password: 
+            <input type="password" name="password" /> 
+        </label>
+        <label>Password Confirmation: 
+            <input type="password" name="password_confirmation" /> 
+        <label> Birthday :</label>
+        </label>
+        <input type="date" name="birthday">
+        <input type="submit" name="register">
+        </form>
+    <h2>Login</h2>
+    <form action="/login" method="post">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="{{ message.tags }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <label>Email: 
+            <input type="email" name="email" /> 
+        </label>
+        <label>Password: 
+            <input type="password" name="password" /> 
+        </label>
+        <input type="submit" value="Login" />
+    </form>
+	</body>
+</html>
