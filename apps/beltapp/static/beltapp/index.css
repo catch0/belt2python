@@ -1,3 +1,7 @@
+#brand{
+  float: left;
+}
+
 #nav{
     background-color: grey;
 }

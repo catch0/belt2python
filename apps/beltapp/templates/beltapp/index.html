@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="{% static 'beltapp/index.css' %}" media="screen" title="no title" charset="utf-8" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
-
+		<link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="initial-scale=1.0">
 	</head>
 	<body>
 		<nav class="navbar navbar-default">
 				<div class="container-fluid">
+					<h2 id = "brand"> Friends Keeper</h2>
 						<div class="navbar-header">
-							<h2> Friends Keeper</h2>
 							</div>
 							<div class = "login">
 								<form class = "form-inline" action="/login" method="post">
@@ -26,12 +28,12 @@
 									{% endfor %}
 									{% endif %}
 									<div class = "form-group">
-										<label>Email:
+										<label>Email: <span class="glyphicon glyphicon-envelope"></span>
 											<input type="email" name="email" />
 										</label>
 									</div>
 									<div class = "form-group">
-										<label>Password:
+										<label>Password:<span class="glyphicon glyphicon-lock"></span>
 											<input type="password" name="password" />
 										</label>
 									</div>
@@ -41,63 +43,48 @@
 						</div>
 			</nav>
 
+<div class = "row">
+	<div class = "col-3">
+	</div>
+	<div class = "col">
+		<form id = "register" action="/register" method="POST">
+					{% csrf_token %}
+					{% for error in errors %}
+					<h4>{{error}}</h4>
+							{% endfor %}
 
-		<form class = "col s6" action="/login" method="post">
-					<!-- {% csrf_token %}
-					{% if messages %}
-					{% for message in messages %}
-					<p class="{{ message.tags }}">{{ message }}</p>
-					{% endfor %}
-					{% endif %}
 					<div class = "form-group">
-						<label>Email:
-							<input type="email" name="email" />
-						</label>
+							<label>Name:
+							<input type="text" name="first_name" />
+							</label>
 					</div>
 					<div class = "form-group">
-						<label>Password:
-							<input type="password" name="password" />
-						</label>
+							<label>Alias:
+								<input type="text" name="alias" />
+							</label>
 					</div>
-					<input type="submit" value="Login" /> -->
+					<div class = "form-group">
+							<label>Email:
+								<input type="email" name="email" />
+							</label>
+					</div>
+					<div class = "form-group">
+							<label>Password:
+								<input type="password" name="password" />
+							</label>
+					</div>
+					<div class = "form-group">
+							<label>Password Confirmation:
+								<input type="password" name="password_confirmation" />
+							</label>
+					</div>
+					<div class = "form-group">
+							<label> Birthday :</label>
+								<input type="date" name="birthday">
+					</div>
+								<input type="submit" name="register">
 				</form>
-
-        <form id = "register" action="/register" method="POST">
-        			{% csrf_token %}
-      				{% for error in errors %}
-              <h4>{{error}}</h4>
-                  {% endfor %}
-
-        			<div class = "form-group">
-        					<label>Name:
-            			<input type="text" name="first_name" />
-        					</label>
-            	</div>
-        			<div class = "form-group">
-         					<label>Alias:
-            				<input type="text" name="alias" />
-        					</label>
-        			</div>
-        			<div class = "form-group">
-            			<label>Email:
-            				<input type="email" name="email" />
-        					</label>
-        			</div>
-        			<div class = "form-group">
-             			<label>Password:
-            				<input type="password" name="password" />
-            			</label>
-        			</div>
-        			<div class = "form-group">
-             			<label>Password Confirmation:
-            				<input type="password" name="password_confirmation" />
-            			</label>
-        			</div>
-        			<div class = "form-group">
-                	<label> Birthday :</label>
-                		<input type="date" name="birthday">
-        			</div>
-        						<input type="submit" name="register">
-        		</form>
+	</div>
+</div>
 	</body>
 </html>
