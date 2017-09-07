@@ -1,19 +1,47 @@
+.wrapper{
+  background-image: url('friends.jpg');
+  height: 970px;
+}
 #brand{
   float: left;
 }
-
-#nav{
-    background-color: grey;
-}
-#register {
-    border: 1px solid black;
-}
-.navbar{
-  background-color: green;
+#navbar{
+    background-color: #F8F918;
+    border-bottom: 4px solid black;
 }
 .form-inline{
   float: right;
 }
-.navbar {
+#lbl{
+    display:inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: right;
+}
+#inpt {
+  display: inline-block;
+  float: left;
+}
+#registerform {
+  background-color: honeydew;
+  padding: 34px 166px 34px 0px;
+}
+#logout {
+  float: right;
+}
+
+.container{
   background-color: grey;
+}
+
+.table-hover{
+  background-color: honeydew;
+}
+.table{
+  background-color: honeydew;
+}
+
+#table{
+  background-color: honeydew;
 }

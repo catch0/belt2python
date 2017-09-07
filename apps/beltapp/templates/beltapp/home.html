@@ -1,60 +1,89 @@
 <!doctype html>
-
 <html>
 	<head>
 		<title>Page Title</title>
 		<meta charset="UTF-8">
+		{% load staticfiles %}
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'beltapp/index.css' %}" media="screen" title="no title" charset="utf-8" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+		<link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 		<meta name="viewport" content="initial-scale=1.0">
 	</head>
-
 	<body>
-<h1>Welcome {{me.alias}}!!</h1>
-        
+		<div class = "wrapper">
+		<nav id = "navbar" class="navbar navbar-default">
+			<div class = " row container-fluid">
+				<div class = "col-4">
+				</div>
+				<div class = "col-5 navbar-header">
+						<h1>Welcome {{me.alias}}!!</h1>
+				</div>
+				<div class = "col-3">
+					<form id = "logout" class = "form-inline"action="/logout" method="post">
+					{% csrf_token %}
+					<input type="submit" value="logout">
+					</form>
+				</div>
+			</div>
+		</nav>
+
 {% if friends %}
-        <h3> Here are all your homies/amigos/compadres/eses/bros/friendos etc.....</h3>
-        {% else %}
+<div class = "container">
+        <h3> Here are all your friends(so far	)</h3>
+					<table id = "table" class = "table table-hover">
+        			<tr>
+        				<th> Alias </th>
+        				<th> Action </th>
+        			</tr>
+        					{% for friend in friends %}
+        			<tr>
+        				<td> {{friend.alias}}</td>
+        				<td> <a href="/users/{{friend.id}}">
+        				<h5> View Profile for {{friend.alias}}</h5></a>
+									<form action="/users/unfriend/{{friend.id}}">
+        							{% csrf_token %}
+        							<input type="submit" value="unfriend">
+        					</form>
+        <!--<a href="/users/remove/{{friend.id}}">Unfriend This Person</a></td>-->
+        			</tr>
+        							{% endfor %}
+        		</table >
+</div>
+							{% else %}
         <h3> You have no friends. you gotta get out there !!</h3>
         {% endif %}
-        <table>
-        <tr>
-        <th> Alias </th>
-        <th> Action </th>
-        </tr>
-        {% for friend in friends %}
-        <tr>
-        <td> {{friend.alias}}</td>
-        <td> <a href="/users/{{friend.id}}">
-        <h5> View Tha Profile!!</h5></a>
-        
-        <form action="/users/unfriend/{{friend.id}}">
-        {% csrf_token %}
-        <input type="submit" value="unfriend">
-        </form>
-        <!--<a href="/users/remove/{{friend.id}}">Unfriend This Person</a></td>-->
-        </tr>
-        {% endfor %}
-        </table>
+
+<div class = "container">
         <h4> Here are some other users you aren't friends with(yet)</h4>
-        <table> 
-        <tr>
-        <th> Alias </th>
-        <th> Action </th>
-        </tr>
-        {% for user in users %}
-                        <tr>
-                            <td><a href='/users/{{user.id}}'>{{user.alias}}</a></td>
-                            <td>
-                                <form action='/users/add/{{user.id}}' method='post'>
-                                    {% csrf_token %}
-                                    <input id='add' type='submit' value='Add as Friend'>
-                                </form>
-                            </td>
-                        </tr>
-                        {% endfor %}
-        </table>
-    <form action="/logout" method="post">
-    {% csrf_token %}
-    <input type="submit" value="logout">    
-    </form>
+        	<table id = "table" class = "table table-hover">
+        			<tr>
+        					<th> Alias </th>
+        						<th> Action </th>
+        						</tr>
+
+										{% for user in users %}
+              				<tr>
+                  				<td><a href='/users/{{user.id}}'>{{user.alias}}</a></td>
+                  				<td>
+																<form action='/users/add/{{user.id}}' method='post'>
+																{% csrf_token %}
+                          			<input id='add' type='submit' value='Add as Friend'>
+                      					</form>
+                  				</td>
+                			</tr>
+                    	{% endfor %}
+        		</table>
+		</div>
+	</div>
 	</body>
 </html>
