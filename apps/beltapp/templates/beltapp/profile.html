@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Contact Keeper</title>
+		<title>r/dallas Connect</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1.0">
 		{% load staticfiles %}
@@ -12,6 +12,8 @@
 		<link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 	</head>
 	<body>
 		<div class = "wrapper">
@@ -34,27 +36,21 @@
 					</div>
 				</div>
 			</nav>
+
 			<div class = "row">
 				<div class = "col-4">
 				</div>
 				<div id = "profilecard" class = "card col-4">
 						<h2> {{user.alias}}</h2>
-						<ul>
-							<li class="profilelist">
-								Birthday: {{user.birthday}}
-							</li>
-							<li class="profilelist">
-								Name: {{user.name}}
-							</li>
-							<li class="profilelist">
-								Email: {{user.email}}
-							</li>
-							<li>
-								Handle: {{user.alias}}
-							</li>
+						<ul class = "list-group">
+							<li class="list-group-item">Birthday: <span class= "glyphicon glyphicon-gift  "></span> {{  user.birthday}}</li>
+								<li class="list-group-item">Name: <span class="glyphicon glyphicon-user  "></span>{{  user.name}}</li>
+									<li class="list-group-item">Email: <span class="glyphicon glyphicon-envelope"></span> {{user.email}}</li>
+										<li class="list-group-item">Handle: <i class="fa fa-reddit-alien" style="font-size:20px"></i> {{user.alias}}</li>
 						</ul>
 				</div>
 			</div>
 		</div>
+
 	</body>
 </html>
