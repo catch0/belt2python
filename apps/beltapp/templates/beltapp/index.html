@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Contact Keeper</title>
+		<title> r/dallas connect</title>
         {% load staticfiles %}
         {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'beltapp/index.css' %}" media="screen" title="no title" charset="utf-8" />
@@ -11,6 +11,7 @@
 		<link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<meta name="viewport" content="initial-scale=1.0">
 	</head>
 	<body>
@@ -18,7 +19,7 @@
 		<nav id = "navbar" class="navbar navbar-default">
 				<div class="row container-fluid">
 					<div class = "col s-1">
-						<h2 id = "brand"> Friends Keeper</h2>
+						<h2 id = "brand"> r/dallas connect</h2>
 					</div>
 						<div class="navbar-header">
 								<form class = "form-inline" action="/login" method="post">
@@ -49,7 +50,7 @@
 							{% endfor %}
 							<label id = "lbl">Name : <span class="glyphicon glyphicon-user"></span> </label>
 							<input id = "inpt" type="text" name="first_name" />
-							<label id = "lbl">Alias : <span class="glyphicon glyphicon-eye-close"></span></label>
+							<label id = "lbl">Reddit Handle : <i class="fa fa-reddit-alien" style="font-size:20px"></i></label>
 								<input id = "inpt" type="text" name="alias" />
 							<label id = "lbl">Email : <span class="glyphicon glyphicon-envelope"></span> </label>
 								<input id = "inpt" type="email" name="email" />
