@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>Friends</title>
+		<title>Contact Keeper</title>
         {% load staticfiles %}
         {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'beltapp/index.css' %}" media="screen" title="no title" charset="utf-8" />
@@ -30,7 +30,7 @@
 									{% endif %}
 										<label>Email: <span class="glyphicon glyphicon-envelope"></span></label>
 											<input type="email" name="email" />
-										<label>Password:<span class="glyphicon glyphicon-lock"></span></label>
+										<label>Password: <span class="glyphicon glyphicon-lock"></span></label>
 											<input type="password" name="password" />
 										<input type="submit" value="Login" />
 								</form>
@@ -45,19 +45,19 @@
 		<form id = "register" action="/register" method="POST">
 					{% csrf_token %}
 					{% for error in errors %}
-					<h4>{{error}}</h4>
+					<p class = "error">{{error}}</p>
 							{% endfor %}
-							<label id = "lbl">Name: </label>
+							<label id = "lbl">Name : <span class="glyphicon glyphicon-user"></span> </label>
 							<input id = "inpt" type="text" name="first_name" />
-							<label id = "lbl">Alias: </label>
+							<label id = "lbl">Alias : <span class="glyphicon glyphicon-eye-close"></span></label>
 								<input id = "inpt" type="text" name="alias" />
-							<label id = "lbl">Email:</label>
+							<label id = "lbl">Email : <span class="glyphicon glyphicon-envelope"></span> </label>
 								<input id = "inpt" type="email" name="email" />
-							<label id = "lbl">Password:</label>
+							<label id = "lbl">Password : <span class="glyphicon glyphicon-lock"></label>
 								<input id = "inpt" type="password" name="password" />
-							<label id = "lbl">Password Confirmation: </label>
+							<label id = "lbl">Password Confirmation :<span class="glyphicon glyphicon-lock">  </label>
 								<input id = "inpt" type="password" name="password_confirmation" />
-							<label id = "lbl"> Birthday :</label>
+							<label id = "lbl"> Birthday : <span class="glyphicon glyphicon-calendar"></span></label>
 								<input id = "inpt" type="date" name="birthday">
 							<label id = "lbl"></label>
 								<input id = "inpt" type="submit" value="register">

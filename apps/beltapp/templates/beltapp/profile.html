@@ -1,21 +1,53 @@
 <!doctype html>
-
 <html>
 	<head>
-		<title>profile!</title>
+		<title>Contact Keeper</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="initial-scale=1.0">
+		{% load staticfiles %}
+		{% load staticfiles %}
+		<link rel="stylesheet" href="{% static 'beltapp/index.css' %}" media="screen" title="no title" charset="utf-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+		<link rel = "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
-
 	<body>
-<h2> This is the profile for {{user.alias}}</h2>
-<p> On {{user.birthday}} something awesome happened. {{user.name}} was born ! send {{user.alias}} an email at {{user.email}}</p>
-<form action="/friendpage" method="post">
-{% csrf_token %}
-<input type="submit" value="go back">
-<form action="/logout" method="post">
-<input type="submit" value="logout">
-</form>
-</form>
+		<div class = "wrapper">
+			<nav id = "navbar" class="navbar navbar-default">
+				<div class = " row container-fluid">
+					<div class = "col-10">
+					</div>
+					<div class = "col-2">
+						<form id = "logout" class = "form-inline"action="/logout" method="post">
+						{% csrf_token %}
+						<input type="submit" value="logout">
+						</form>
+						<form action="/friendpage" method="post">
+						{% csrf_token %}
+						<input type="submit" value="go back">
+					</div>
+				</div>
+			</nav>
+			<div class = "row">
+				<div class = "col-4">
+				</div>
+				<div id = "profilecard" class = "card col-4">
+						<h2> {{user.alias}}</h2>
+						<ul>
+							<li class="profilelist">
+								Birthday: {{user.birthday}}
+							</li>
+							<li class="profilelist">
+								Name: {{user.name}}
+							</li>
+							<li class="profilelist">
+								Email: {{user.email}}
+							</li>
+						</ul>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

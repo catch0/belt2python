@@ -9,22 +9,22 @@ class UserManager(models.Manager):
     def register(self, name, alias, email, password, password_confirmation, birthday):
         errors = {}
         if (len(name) < 2):
-            errors['name'] = "could we please get your first name"
+            errors['name'] = "please enter your first name"
 
         if (len(alias) < 2):
-            errors['alias'] = "get yourself an alias!!"
+            errors['alias'] = "please enter an alias"
 
         if (len(password) < 8):
-            errors['password'] = "we need a password please"
+            errors['password'] = "please enter a password"
 
         if (password != password_confirmation):
-            errors['password'] = "uh oh, the passwords don't match"
+            errors['password'] = "please make sure password matches password confirmation"
         if (not EMAIL_REGEX.match(email)):
-            errors['email'] = 'Invalid email.'
+            errors['email'] = 'that is not a valid email'
 
         if (birthday == None):
-            error['birthday'] = 'we gotta be born to login!'
-            
+            error['birthday'] = 'please enter birthday'
+
         if (errors):
             return (False, errors)
         else:
@@ -77,4 +77,3 @@ class Friend(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = models.Manager()
-
